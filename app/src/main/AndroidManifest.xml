@@ -21,13 +21,21 @@
             android:name="com.naver.maps.map.CLIENT_ID"
             android:value="3tuc6by5xf" />
 
+        <!-- NaviActivity를 메인 액티비티로 설정 -->
         <activity
-            android:name=".MainActivity"
+            android:name=".NaviActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <!-- MainActivity 설정을 서브 액티비티로 변경 -->
+        <activity
+            android:name=".MainActivity"
+            android:exported="false" />
+
     </application>
+
 </manifest>
