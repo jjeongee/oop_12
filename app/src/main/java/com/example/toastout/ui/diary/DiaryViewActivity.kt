@@ -1,4 +1,4 @@
-package com.example.toastoutapplication
+package com.example.toastout.ui.diary
 
 import android.content.Context
 import android.content.Intent
@@ -10,6 +10,7 @@ import android.widget.BaseAdapter
 import android.widget.GridView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import com.example.toastout.R
 
 
 class DiaryViewActivity : AppCompatActivity() {

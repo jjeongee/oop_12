@@ -1,4 +1,4 @@
-package com.example.toastoutapplication
+package com.example.toastout.ui.diary
 
 import android.os.Bundle
 import android.widget.Button
@@ -6,13 +6,9 @@ import android.widget.EditText
 import android.widget.Spinner
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import android.app.DatePickerDialog
 import android.util.Log
 import android.widget.ArrayAdapter
-import android.widget.TextView
-import java.text.SimpleDateFormat
-import java.util.*
-
+import com.example.toastout.R
 
 
 class DiaryEntryActivity : AppCompatActivity() {

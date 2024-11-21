@@ -14,6 +14,9 @@ class Home_Fragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // fragment_home 레이아웃을 Inflate
-        return inflater.inflate(R.layout.fragment_home, container, false)
+        return inflater.inflate(
+
+
+            R.layout.fragment_home, container, false)
     }
 }
