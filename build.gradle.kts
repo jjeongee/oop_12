@@ -2,9 +2,6 @@
 plugins {
     alias(libs.plugins.android.application) apply false
     alias(libs.plugins.kotlin.android) apply false
-<<<<<<< HEAD
-}
-=======
     alias(libs.plugins.google.gms.google.services) apply false
 }
 
@@ -20,4 +17,3 @@ allprojects {
 
 
 
->>>>>>> 3c45077 (하하하 컨텐츠 추천에서 음악 미리듣기까지 내가 해냄)
