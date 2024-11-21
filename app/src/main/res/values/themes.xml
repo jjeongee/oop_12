@@ -1,9 +1,17 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
+<<<<<<< HEAD
     <style name="Base.Theme.ToastOutApplication" parent="Theme.Material3.DayNight.NoActionBar">
+=======
+    <style name="Base.Theme.Toastout" parent="Theme.Material3.DayNight.NoActionBar">
+>>>>>>> 3c45077 (하하하 컨텐츠 추천에서 음악 미리듣기까지 내가 해냄)
         <!-- Customize your light theme here. -->
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
     </style>
 
+<<<<<<< HEAD
     <style name="Theme.ToastOutApplication" parent="Base.Theme.ToastOutApplication" />
+=======
+    <style name="Theme.Toastout" parent="Base.Theme.Toastout" />
+>>>>>>> 3c45077 (하하하 컨텐츠 추천에서 음악 미리듣기까지 내가 해냄)
 </resources>

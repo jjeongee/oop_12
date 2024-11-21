@@ -1,9 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
+<<<<<<< HEAD
 
 
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
     <uses-permission android:name="android.permission.INTERNET"/>
+=======
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
+
+>>>>>>> 3c45077 (하하하 컨텐츠 추천에서 음악 미리듣기까지 내가 해냄)
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -12,6 +23,7 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
+<<<<<<< HEAD
         android:theme="@style/Theme.ToastOutApplication"
         tools:targetApi="31">
         <activity
@@ -30,3 +42,31 @@
 
 
 
+=======
+        android:theme="@style/Theme.Toastout"
+        tools:targetApi="31">
+
+        <!-- 네이버 지도 SDK 클라이언트 ID 설정 -->
+        <meta-data
+            android:name="com.naver.maps.map.CLIENT_ID"
+            android:value="3tuc6by5xf" />
+
+        <!-- NaviActivity를 메인 액티비티로 설정 -->
+        <activity
+            android:name=".NaviActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <!-- MainActivity 설정을 서브 액티비티로 변경 -->
+        <activity
+            android:name=".ui.main.MainActivity"
+            android:exported="false" />
+
+    </application>
+
+</manifest>
+>>>>>>> 3c45077 (하하하 컨텐츠 추천에서 음악 미리듣기까지 내가 해냄)
