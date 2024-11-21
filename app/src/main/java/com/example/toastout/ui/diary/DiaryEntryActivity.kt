@@ -19,7 +19,7 @@ class DiaryEntryActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState) // super 호출을 가장 먼저 실행
-        setContentView(R.layout.activity_diary_entry) // 레이아웃 설정 후 뷰를 참조해야 합니다
+        setContentView(R.layout.fragment_diary_entry) // 레이아웃 설정 후 뷰를 참조해야 합니다
 
         // View 요소 초기화
         val emotionSpinner: Spinner = findViewById(R.id.emotionSpinner)
