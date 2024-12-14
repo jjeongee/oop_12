@@ -18,7 +18,7 @@
             android:textSize="24sp"
             android:textStyle="bold"
             android:layout_gravity="center_horizontal"
-            android:paddingBottom="16dp"/>
+            android:paddingBottom="16dp" />
 
         <!-- 프로필 및 감정 상태 -->
         <LinearLayout
@@ -55,11 +55,11 @@
             </LinearLayout>
         </LinearLayout>
 
-        <!-- 추천 콘텐츠 섹션 -->
+        <!-- 첫 번째 지도와 설명 -->
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="토스트아웃이 추천하는 컨텐츠"
+            android:text="토스트아웃이 추천하는 근처 카페"
             android:textSize="18sp"
             android:textStyle="bold"
             android:paddingTop="24dp"
@@ -68,121 +68,49 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="오늘 강아지는 어때요?"
-            android:textSize="16sp"
+            android:text="이승주 님 근처의 카페예요! 편하게 휴식을 취할 수 있게끔 도와주는 곳을 저희가 알려드릴게요."
+            android:textSize="14sp"
             android:layout_marginBottom="8dp"/>
 
-        <!-- 강아지 추천 콘텐츠 (가로 스크롤 RecyclerView) -->
-        <RelativeLayout
+        <FrameLayout
+            android:id="@+id/map_fragment_cafe"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp">
+            android:layout_height="200dp"
+            android:layout_marginBottom="16dp"/>
 
-            <Button
-                android:id="@+id/left_button_dog"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="&lt;"
-                android:layout_alignParentStart="true"
-                android:layout_centerVertical="true"/>
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recycler_view_dog"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_toEndOf="@id/left_button_dog"
-                android:layout_toStartOf="@id/right_button_dog"
-                android:layout_centerVertical="true"
-                android:layout_marginStart="8dp"
-                android:layout_marginEnd="8dp"/>
-
-            <Button
-                android:id="@+id/right_button_dog"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="&gt;"
-                android:layout_alignParentEnd="true"
-                android:layout_centerVertical="true"/>
-        </RelativeLayout>
-
-        <!-- 음악 추천 콘텐츠 -->
+        <!-- 두 번째 지도와 설명 -->
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="신나는 음악으로 기운 회복하기"
-            android:textSize="16sp"
-            android:layout_marginBottom="8dp"/>
+            android:text="카페가 별로라면 산책은 어때요?"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:paddingTop="16dp"
+            android:paddingBottom="8dp"/>
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp">
-
-            <Button
-                android:id="@+id/left_button_music"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="&lt;"
-                android:layout_alignParentStart="true"
-                android:layout_centerVertical="true"/>
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recycler_view_music"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_toEndOf="@id/left_button_music"
-                android:layout_toStartOf="@id/right_button_music"
-                android:layout_centerVertical="true"
-                android:layout_marginStart="8dp"
-                android:layout_marginEnd="8dp"/>
-
-            <Button
-                android:id="@+id/right_button_music"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="&gt;"
-                android:layout_alignParentEnd="true"
-                android:layout_centerVertical="true"/>
-        </RelativeLayout>
-
-        <!-- 웹툰 추천 콘텐츠 -->
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="조금은 슴슴하지만 맛있는 이야기"
-            android:textSize="16sp"
+            android:text="이승주 님 근처의 산책로예요! 걷다 보면 모든 걸 다 잊고 한결 마음이 가벼워질 거예요."
+            android:textSize="14sp"
             android:layout_marginBottom="8dp"/>
 
-        <RelativeLayout
+        <FrameLayout
+            android:id="@+id/map_fragment_walk"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="200dp"
+            android:layout_marginBottom="16dp"/>
 
-            <Button
-                android:id="@+id/left_button_webtoon"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="&lt;"
-                android:layout_alignParentStart="true"
-                android:layout_centerVertical="true"/>
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recycler_view_webtoon"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_toEndOf="@id/left_button_webtoon"
-                android:layout_toStartOf="@id/right_button_webtoon"
-                android:layout_centerVertical="true"
-                android:layout_marginStart="8dp"
-                android:layout_marginEnd="8dp"/>
-
-            <Button
-                android:id="@+id/right_button_webtoon"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="&gt;"
-                android:layout_alignParentEnd="true"
-                android:layout_centerVertical="true"/>
-        </RelativeLayout>
+<!--        &lt;!&ndash; Fragment_recommand로 이동하는 버튼 &ndash;&gt;-->
+<!--        <Button-->
+<!--            android:id="@+id/btn_go_to_main"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="더 많은 콘텐츠 추천 보기"-->
+<!--            android:layout_marginTop="16dp"-->
+<!--            android:layout_marginBottom="16dp"-->
+<!--            android:padding="12dp"-->
+<!--            android:background="?attr/selectableItemBackground" />-->
 
     </LinearLayout>
 </ScrollView>

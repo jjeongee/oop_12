@@ -3,25 +3,25 @@
     <item
         android:id="@+id/nav_home"
         android:title="홈"
-        android:icon="@drawable/baseline_home_24" />
+        android:icon="@drawable/baseline_home" />
 
     <item
         android:id="@+id/nav_todo"
         android:title="투두"
-        android:icon="@drawable/baseline_edit_note_24" />
+        android:icon="@drawable/baseline_editnote" />
 
     <item
         android:id="@+id/nav_diary"
         android:title="일기"
-        android:icon="@drawable/baseline_today_24" />
+        android:icon="@drawable/baseline_today" />
 
     <item
         android:id="@+id/nav_login"
         android:title="로그인"
-        android:icon="@drawable/baseline_login_24" />
+        android:icon="@drawable/baseline_login" />
 
     <item
         android:id="@+id/nav_content"
         android:title="컨텐츠 추천"
-        android:icon="@drawable/baseline_recommend_24" />
+        android:icon="@drawable/baseline_recommend" />
 </menu>

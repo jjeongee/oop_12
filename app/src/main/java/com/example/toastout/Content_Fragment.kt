@@ -15,7 +15,7 @@ import com.naver.maps.map.NaverMapOptions
 import com.naver.maps.map.util.FusedLocationSource
 import com.naver.maps.map.LocationTrackingMode
 
-class Content_Fragment : Fragment(R.layout.fragment_content), OnMapReadyCallback {
+class Content_Fragment : Fragment(R.layout.fragment_recommend), OnMapReadyCallback {
 
     private lateinit var naverMap: NaverMap
     private lateinit var locationSource: FusedLocationSource
@@ -51,13 +51,13 @@ class Content_Fragment : Fragment(R.layout.fragment_content), OnMapReadyCallback
             }
         mapFragmentWalk.getMapAsync(this)
 
-        // Recommend_Fragment로 이동하는 버튼 클릭 이벤트 설정
-        view.findViewById<View>(R.id.btn_go_to_recommend).setOnClickListener {
-            parentFragmentManager.beginTransaction()
-                .replace(R.id.fragment_container, Recommend_Fragment())
-                .addToBackStack(null)
-                .commit()
-        }
+//        // Recommend_Fragment로 이동하는 버튼 클릭 이벤트 설정
+//        view.findViewById<View>(R.id.btn_go_to_recommend).setOnClickListener {
+//            parentFragmentManager.beginTransaction()
+//                .replace(R.id.fragment_container, Recommend_Fragment())
+//                .addToBackStack(null)
+//                .commit()
+//        }
     }
 
     override fun onMapReady(naverMap: NaverMap) {
