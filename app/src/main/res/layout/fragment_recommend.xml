@@ -2,6 +2,7 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="#F7F7F7">
 
     <LinearLayout
@@ -14,52 +15,54 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="토스트아웃"
+            android:text="기분전환 추천코스"
             android:textSize="24sp"
             android:textStyle="bold"
             android:layout_gravity="center_horizontal"
             android:paddingBottom="16dp" />
 
-        <!-- 프로필 및 감정 상태 -->
+<!--        감정에 따라 다른 장소 추천 : 감정을 터치해서 고를수 있음-->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:gravity="center_vertical">
+            android:gravity="center_horizontal">
+            <ImageButton
+                android:id="@+id/anxiousProfile"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_marginRight="20dp"
+                android:src="@drawable/anxious_profile"
+                android:scaleType="centerCrop"
+                android:background="@drawable/emotion_profile" />
 
-            <!-- 프로필 이미지 -->
-            <ImageView
-                android:layout_width="72dp"
-                android:layout_height="72dp"
-                android:layout_marginEnd="16dp"/>
+            <ImageButton
+                android:id="@+id/joyProfile"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:src="@drawable/joy_profile"
+                android:layout_marginRight="20dp"
+                android:scaleType="centerCrop"
+                android:background="@drawable/emotion_profile" />
 
-            <!-- 사용자 이름과 감정 상태 -->
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
+            <ImageButton
+                android:id="@+id/sadnessProfile"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_marginRight="20dp"
+                android:src="@drawable/sadness_profile"
+                android:scaleType="centerCrop"
+                android:background="@drawable/emotion_profile" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="이승주 님"
-                    android:textSize="18sp"
-                    android:textStyle="bold" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="오늘의 기분은 슬픔 입니다"
-                    android:textSize="14sp"
-                    android:layout_marginTop="4dp"/>
-            </LinearLayout>
         </LinearLayout>
+
 
         <!-- 첫 번째 지도와 설명 -->
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="토스트아웃이 추천하는 근처 카페"
+            android:text="토스트아웃이 추천하는 카페"
             android:textSize="18sp"
             android:textStyle="bold"
             android:paddingTop="24dp"
