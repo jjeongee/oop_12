@@ -1,0 +1,25 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:padding="8dp">
+
+    <!-- 썸네일 이미지 -->
+    <ImageView
+        android:id="@+id/thumbnailImageView"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:contentDescription="Thumbnail"
+        android:scaleType="centerCrop" />
+
+    <!-- 트랙 제목 -->
+    <TextView
+        android:id="@+id/titleTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingTop="4dp"
+        android:text="Track Title"
+        android:textSize="14sp"
+        android:textStyle="bold" />
+</LinearLayout>
