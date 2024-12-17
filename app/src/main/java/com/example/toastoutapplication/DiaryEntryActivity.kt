@@ -10,13 +10,9 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
-import android.widget.GridView
 import android.widget.Toast
 import com.google.firebase.FirebaseApp
 import com.google.firebase.firestore.FirebaseFirestore
-import java.text.SimpleDateFormat
-import java.util.*
-import kotlin.collections.emptyList as emptyList
 
 
 
@@ -128,8 +124,6 @@ class CalendarActivity : AppCompatActivity() {
         calendarGridLayout = findViewById(R.id.calendarGridLayout)
         addCalendarButtons()
 
-        // 새로 업데이트된 날짜 확인
-        val updatedDate = intent.getStringExtra("updatedDate")
     }
 
     private fun addCalendarButtons() {
