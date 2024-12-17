@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#F0D4AB"
     android:orientation="vertical"
-    android:padding="16dp"
-    android:background="#F0D4AB">
+    android:padding="16dp">
 
     <TextView
         android:layout_width="wrap_content"
@@ -13,69 +13,82 @@
         android:layout_gravity="center"
         android:layout_marginBottom="16dp"
         android:text="일기 작성칸"
+        android:textColor="#5F4B32"
         android:textSize="18sp"
         android:textStyle="bold"
-        android:textColor="#5F4B32" />
+        tools:ignore="HardcodedText" />
 
     <!-- 날짜와 요일 입력 -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginBottom="8dp">
+        android:layout_marginBottom="8dp"
+        android:orientation="horizontal">
 
         <EditText
             android:id="@+id/dateEditText"
             android:layout_width="0dp"
+            android:layout_height="48dp"
             android:layout_weight="1"
-            android:layout_height="wrap_content"
+            android:autofillHints=""
+            android:background="#FFEDDB"
             android:hint="날짜: "
             android:inputType="date"
             android:padding="8dp"
-            android:background="#FFEDDB"
-            android:textColor="#5F4B32" />
+            android:textColor="#5F4B32"
+            tools:ignore="HardcodedText" />
 
         <EditText
             android:id="@+id/dayEditText"
             android:layout_width="0dp"
+            android:layout_height="48dp"
             android:layout_weight="1"
-            android:layout_height="wrap_content"
+            android:autofillHints=""
+            android:background="#FFEDDB"
             android:hint="요일: "
             android:inputType="text"
             android:padding="8dp"
-            android:background="#FFEDDB"
-            android:textColor="#5F4B32" />
+            android:textColor="#5F4B32"
+            tools:ignore="HardcodedText" />
     </LinearLayout>
 
     <!-- 기분 선택 -->
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="기분:"
-        android:textSize="16sp"
         android:layout_marginTop="8dp"
-        android:textColor="#5F4B32" />
+        android:text="기분:"
+        android:textColor="#5F4B32"
+        android:textSize="16sp"
+        tools:ignore="HardcodedText" />
+
+    <!-- 일기 작성 -->
+
 
     <Spinner
         android:id="@+id/emotionSpinner"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="48dp"
         android:layout_marginTop="8dp"
         android:background="#FFEDDB"
         android:textColor="#5F4B32" />
 
-    <!-- 일기 작성 -->
+
     <EditText
         android:id="@+id/editTextDiary"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="326dp"
         android:layout_weight="1"
+        android:autofillHints=""
         android:background="#FFEDDB"
         android:gravity="top"
         android:hint="일기를 작성하세요"
         android:inputType="textMultiLine"
         android:padding="8dp"
-        android:textColor="#5F4B32" />
+        android:textColor="#5F4B32"
+        tools:ignore="HardcodedText,InefficientWeight" />
+
+
 
     <!-- 저장 버튼 -->
     <Button
@@ -83,8 +96,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:text="저장"
         android:layout_marginTop="16dp"
-        android:backgroundTint="#D1A566" />
+        android:backgroundTint="#D1A566"
+        android:text="저장"
+        tools:ignore="HardcodedText" />
 
 </LinearLayout>

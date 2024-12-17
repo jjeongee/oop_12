@@ -2,4 +2,16 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    <color name="selected_day">#FFD700</color> <!-- 선택된 날의 배경색 -->
+    <color name="default_day">#FFFFFF</color> <!-- 기본 상태의 배경색 -->
+
+    <color name="happyColor">#FFEB3B</color>
+    <color name="anxiousColor">#FF9800</color>
+    <color name="sadColor">#2196F3</color>
+
 </resources>
+
+
+
+
