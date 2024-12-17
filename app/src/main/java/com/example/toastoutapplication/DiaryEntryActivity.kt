@@ -1,13 +1,9 @@
 package com.example.toastoutapplication
 
 import android.app.Application
-import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import android.widget.Toast
@@ -66,7 +62,7 @@ class DiaryEntryActivity : AppCompatActivity() {
         emotionSpinner.adapter = spinnerAdapter
     }
 
-    // 저장 버튼 클릭 시 일기 데이터 저장 (로컬 변수에 저장만 처리)
+    // 저장 버튼 클릭 시 일기 데이터 저장
     private fun saveDiary() {
         val content = editTextDiary.text.toString()
         val emotion = emotionSpinner.selectedItem.toString()
@@ -156,71 +152,5 @@ class CalendarActivity : AppCompatActivity() {
 
             calendarGridLayout.addView(button)
         }
-    }
-}
-
-
-
-data class CalendarEvent(
-    val id: String,
-    val title: String,
-    val startDate: String,
-    val endDate: String
-)
-
-
-// CalendarAdapter - 캘린더 어댑터
-class CalendarAdapter(
-    context: Context,
-    private val dayList: MutableList<Pair<String, List<CalendarEvent>>>
-) : BaseAdapter() {
-
-    private val inflater: LayoutInflater = LayoutInflater.from(context)
-
-    override fun getCount(): Int = dayList.size
-
-    override fun getItem(position: Int): Any = dayList[position]
-
-    override fun getItemId(position: Int): Long = position.toLong()
-
-    override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
-        val view: View
-        val viewHolder: ViewHolder
-
-        if (convertView == null) {
-            view = inflater.inflate(R.layout.item_calendar_day, parent, false)
-            viewHolder = ViewHolder(view)
-            view.tag = viewHolder
-        } else {
-            view = convertView
-            viewHolder = view.tag as ViewHolder
-        }
-
-        val (date, events) = dayList[position]
-        viewHolder.dayTextView.text = date.substring(8) // 날짜의 일 부분만 표시
-
-        // 이벤트(감정 상태)가 있으면 표시
-        if (events.isNotEmpty()) {
-            val emotion = events.first().title
-            viewHolder.dayTextView.setBackgroundResource(getEmotionColor(emotion))
-        } else {
-            viewHolder.dayTextView.setBackgroundResource(android.R.color.transparent)
-        }
-
-        return view
-    }
-
-    private fun getEmotionColor(emotion: String): Int {
-        return when (emotion) {
-            "기쁨" -> R.color.happyColor
-            "불안" -> R.color.anxiousColor
-            "슬픔" -> R.color.sadColor
-            else -> android.R.color.transparent
-        }
-    }
-
-
-    private class ViewHolder(view: View) {
-        val dayTextView: TextView = view.findViewById(R.id.dayTextView)
     }
 }

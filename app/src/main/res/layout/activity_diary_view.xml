@@ -18,7 +18,7 @@
     <GridLayout
         android:id="@+id/calendarGridLayout"
         android:layout_width="match_parent"
-        android:layout_height="636dp"
+        android:layout_height="374dp"
         android:layout_gravity="center"
         android:columnCount="7"
         android:horizontalSpacing="8dp"
