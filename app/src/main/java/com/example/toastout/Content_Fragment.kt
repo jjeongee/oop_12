@@ -10,15 +10,18 @@ import androidx.fragment.app.Fragment
 import com.example.toastout.ui.caferecommend.JoyCafe_Fragment
 import com.example.toastout.ui.caferecommend.AnxiousCafe_Fragment
 import com.example.toastout.ui.caferecommend.SadCafe_Fragment
-import com.naver.maps.map.MapFragment
-import com.naver.maps.map.NaverMap
-import com.naver.maps.map.OnMapReadyCallback
+import com.naver.maps.map.*
 import com.naver.maps.map.util.FusedLocationSource
 
-class Content_Fragment : Fragment(R.layout.fragment_recommend), OnMapReadyCallback {
+class Content_Fragment : Fragment(R.layout.fragment_recommend) {
 
-    private lateinit var naverMap: NaverMap
+    private lateinit var naverMapCafe: NaverMap
+    private lateinit var naverMapWalk: NaverMap
     private lateinit var locationSource: FusedLocationSource
+
+    companion object {
+        private const val LOCATION_PERMISSION_REQUEST_CODE = 1000
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -45,34 +48,69 @@ class Content_Fragment : Fragment(R.layout.fragment_recommend), OnMapReadyCallba
                 .commit()
         }
 
-        // 네이버 지도 초기화
-        initMap()
+        // 위치 소스 초기화
+        locationSource = FusedLocationSource(this, LOCATION_PERMISSION_REQUEST_CODE)
+
+        // 두 개의 지도 초기화
+        initMap(R.id.map_fragment_cafe, "map_cafe")
+        initMap(R.id.map_fragment_walk, "map_walk")
     }
 
-    private fun initMap() {
-        val mapFragment = childFragmentManager.findFragmentById(R.id.map_fragment_cafe) as MapFragment?
+    private fun initMap(frameLayoutId: Int, tag: String) {
+        val mapFragment = childFragmentManager.findFragmentById(frameLayoutId) as MapFragment?
             ?: MapFragment.newInstance().also {
                 childFragmentManager.beginTransaction()
-                    .replace(R.id.map_fragment_cafe, it)
+                    .replace(frameLayoutId, it)
                     .commit()
             }
-        mapFragment.getMapAsync(this)
+
+        // 지도 비동기 호출
+        mapFragment.getMapAsync { naverMap ->
+            when (tag) {
+                "map_cafe" -> {
+                    naverMapCafe = naverMap
+                    setupMap(naverMapCafe)
+                }
+                "map_walk" -> {
+                    naverMapWalk = naverMap
+                    setupMap(naverMapWalk)
+                }
+            }
+        }
     }
 
-    override fun onMapReady(naverMap: NaverMap) {
-        this.naverMap = naverMap
+    private fun setupMap(naverMap: NaverMap) {
+        naverMap.locationSource = locationSource
 
         // 위치 권한 확인
-        if (ActivityCompat.checkSelfPermission(requireContext(), Manifest.permission.ACCESS_FINE_LOCATION)
-            != PackageManager.PERMISSION_GRANTED
+        if (ActivityCompat.checkSelfPermission(
+                requireContext(), Manifest.permission.ACCESS_FINE_LOCATION
+            ) == PackageManager.PERMISSION_GRANTED
         ) {
+            naverMap.locationTrackingMode = LocationTrackingMode.Follow
+        } else {
             ActivityCompat.requestPermissions(
                 requireActivity(),
                 arrayOf(Manifest.permission.ACCESS_FINE_LOCATION),
-                1000
+                LOCATION_PERMISSION_REQUEST_CODE
             )
-        } else {
-            naverMap.locationTrackingMode = com.naver.maps.map.LocationTrackingMode.Follow
+        }
+    }
+
+    override fun onRequestPermissionsResult(
+        requestCode: Int, permissions: Array<out String>, grantResults: IntArray
+    ) {
+        if (requestCode == LOCATION_PERMISSION_REQUEST_CODE) {
+            if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                if (::naverMapCafe.isInitialized) {
+                    naverMapCafe.locationTrackingMode = LocationTrackingMode.Follow
+                }
+                if (::naverMapWalk.isInitialized) {
+                    naverMapWalk.locationTrackingMode = LocationTrackingMode.Follow
+                }
+            } else {
+                Log.d("Permission", "위치 권한 거부됨")
+            }
         }
     }
 }
