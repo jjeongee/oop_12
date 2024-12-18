@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">ToastOutApplication</string>
+
+    <string-array name="emotion_array">
+        <item>행복</item>
+        <item>슬픔</item>
+        <item>분노</item>
+    </string-array>
+</resources>

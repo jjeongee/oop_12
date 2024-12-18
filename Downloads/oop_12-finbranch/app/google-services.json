@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "350893761470",
+    "project_id": "toastout-d859f",
+    "storage_bucket": "toastout-d859f.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:350893761470:android:012573638f5b50f63b4fef",
+        "android_client_info": {
+          "package_name": "com.example.toastout"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDz_w0OtM55afipoz02Mum0FxOLnotE_4A"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

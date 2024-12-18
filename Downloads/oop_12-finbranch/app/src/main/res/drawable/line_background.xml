@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- 하얀 배경 -->
+    <item android:drawable="@android:color/white" />
+
+    <!-- 줄 배경 -->
+    <item>
+        <shape android:shape="rectangle">
+            <size android:height="1dp" />
+            <solid android:color="#D3D3D3" /> <!-- 회색 줄 색상 설정 -->
+        </shape>
+    </item>
+
+    <!-- 줄 간격 설정 -->
+    <item
+        android:top="40dp"
+        android:bottom="40dp"
+        android:left="16dp"
+        android:right="16dp">
+        <shape android:shape="rectangle">
+            <size android:height="1dp" />
+            <solid android:color="#D3D3D3" />
+        </shape>
+    </item>
+</layer-list>
+
