@@ -12,23 +12,24 @@ class Music_Adapter(
 ) : RecyclerView.Adapter<Music_Adapter.MusicViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MusicViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(android.R.layout.simple_list_item_1, parent, false)
-        return MusicViewHolder(view)
+        val view = LayoutInflater.from(parent.context)
+            .inflate(android.R.layout.simple_list_item_1, parent, false)
+        return MusicViewHolder(view) // 뷰 홀더 반환
     }
 
     override fun onBindViewHolder(holder: MusicViewHolder, position: Int) {
         holder.bind("Track ${position + 1}", position)
     }
 
-    override fun getItemCount(): Int = musicResIds.size
+    override fun getItemCount(): Int = musicResIds.size // 트랙의 총 개수
 
     inner class MusicViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        private val textView: TextView = view.findViewById(android.R.id.text1)
+        private val textView: TextView = view.findViewById(android.R.id.text1) // TextView 참조
 
         fun bind(title: String, position: Int) {
             textView.text = title
             itemView.setOnClickListener {
-                onItemClick(position) // 아이템 클릭 이벤트 전달
+                onItemClick(position) // 콜백 함수
             }
         }
     }

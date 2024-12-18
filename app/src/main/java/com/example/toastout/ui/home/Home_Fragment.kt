@@ -22,10 +22,10 @@ class Home_Fragment : Fragment() {
     private val firebaseStorage = FirebaseStorage.getInstance()
 
     // 음악 관련 변수
-    private var mediaPlayer: MediaPlayer? = null
+    private var mediaPlayer: MediaPlayer? = null // 음악 재생
     private var isMusicPlaying = false
-    private val musicFileNames = listOf("APT.mp3", "diewith.mp3", "pocketlocket.mp3", "numberonegirl.mp3", "lastchristmas.mp3")
-    private val thumbnailMap = mapOf(
+    private val musicFileNames = listOf( "APT.mp3", "diewith.mp3", "pocketlocket.mp3", "numberonegirl.mp3", "lastchristmas.mp3")
+    private val thumbnailMap = mapOf( // 썸네일!!!! 이건 파베에서 X
         "APT.mp3" to R.drawable.apt,
         "diewith.mp3" to R.drawable.diewith,
         "pocketlocket.mp3" to R.drawable.pocketlocket,
@@ -37,59 +37,56 @@ class Home_Fragment : Fragment() {
     private lateinit var musicAdapter: MusicAdapter
     private lateinit var musicRecyclerView: RecyclerView
 
-    // 비디오 관련 변수
+    // 비디오인데 음악이랑 똑같음
     private lateinit var videoView: VideoView
-    private val videoFolders = listOf("cat", "dog", "hamster")
+    private val videoFolders = listOf("cat", "dog", "hamster") // 비디오 폴더 목록 -> 랜덤으로 할 거임
     private val videoUrls = mutableListOf<Uri>()
     private var currentVideoIndex = 0
     private var isVideoPlaying = false
 
+    // 아까처럼 뷰로 바꾸기
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
+        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View = inflater.inflate(R.layout.fragment_home, container, false)
 
+    // 시험범위였던 super...
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        // VideoView 설정
         videoView = view.findViewById(R.id.video_view)
 
         // 음악 RecyclerView 설정
         musicRecyclerView = view.findViewById(R.id.recycler_view_music)
-        musicRecyclerView.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+        musicRecyclerView.layoutManager =
+            LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
 
-        // Firebase 음악 및 영상 로드
-        loadMusicUrls {
-            setupMusicAdapter()
-        }
-        loadRandomVideoUrls {
-            playVideo(videoUrls[currentVideoIndex])
-        }
+        loadMusicUrls { setupMusicAdapter() }
+        loadRandomVideoUrls { playVideo(videoUrls[currentVideoIndex]) } // 랜덤 비디오 (창 로드 때마다)
 
-        // 버튼 이벤트 설정
+        // 음악이랑 영상 버튼 클릭
         view.findViewById<Button>(R.id.left_button_video).setOnClickListener { navigateVideo(-1) }
         view.findViewById<Button>(R.id.right_button_video).setOnClickListener { navigateVideo(1) }
         view.findViewById<Button>(R.id.left_button_music).setOnClickListener { navigateMusic(-1) }
         view.findViewById<Button>(R.id.right_button_music).setOnClickListener { navigateMusic(1) }
 
-        // 비디오 및 음악 토글 이벤트
         videoView.setOnClickListener { toggleVideo() }
     }
 
+    // 음악 어댑터를 설정
     private fun setupMusicAdapter() {
         musicAdapter = MusicAdapter(musicList, currentTrackIndex) { position ->
             currentTrackIndex = position
-            playMusicFromFirebase(musicList[position].url)
+            playMusicFromFirebase(musicList[position].url) // 클릭된 음악 재생
         }
         musicRecyclerView.adapter = musicAdapter
         musicRecyclerView.setOnClickListener { toggleMusic() }
     }
 
     private fun loadMusicUrls(onComplete: () -> Unit) {
-        val storageRef = firebaseStorage.reference.child("music")
+        val storageRef = firebaseStorage.reference.child("music") // "music" 폴더 참조
         musicFileNames.forEach { fileName ->
             storageRef.child(fileName).downloadUrl.addOnSuccessListener { uri ->
+                // 음악 데이터를 리스트에 추가
                 musicList.add(
                     Music(
                         title = fileName.removeSuffix(".mp3"),
@@ -102,8 +99,9 @@ class Home_Fragment : Fragment() {
         }
     }
 
+    // Firebase에서 랜덤 비디오 폴더의 비디오 URL을 불러오는 함수
     private fun loadRandomVideoUrls(onComplete: () -> Unit) {
-        val randomFolder = videoFolders.random()
+        val randomFolder = videoFolders.random() // 랜덤 폴더 선택
         val storageRef = firebaseStorage.reference.child(randomFolder)
         videoUrls.clear()
         storageRef.listAll().addOnSuccessListener { result ->
@@ -137,6 +135,7 @@ class Home_Fragment : Fragment() {
         }
     }
 
+    // 음악 일시정지/재생 전환
     private fun toggleMusic() {
         mediaPlayer?.let {
             if (isMusicPlaying) it.pause() else it.start()
@@ -144,11 +143,13 @@ class Home_Fragment : Fragment() {
         }
     }
 
+    // 비디오 일시정지/재생 전환
     private fun toggleVideo() {
         if (isVideoPlaying) videoView.pause() else videoView.start()
         isVideoPlaying = !isVideoPlaying
     }
 
+    // 음악 목록에서 다음/이전 곡으로 이동
     private fun navigateMusic(direction: Int) {
         if (musicList.isNotEmpty()) {
             currentTrackIndex = (currentTrackIndex + direction + musicList.size) % musicList.size
@@ -168,6 +169,5 @@ class Home_Fragment : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         mediaPlayer?.release()
-        mediaPlayer = null
     }
 }
